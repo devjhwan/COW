@@ -6,8 +6,6 @@
 
 body {
 	font-family: Arial, Helvetica, sans-serif;
-	width: 100%;
-	margin-top: 50px;
 	min-width: 800px;
 	margin: 0px;
 }
@@ -29,10 +27,16 @@ header {
 .head-menu {
 	display: flex;
 	justify-content: space-between;
-	gap: 30px
+	gap: 20px
 }
 .head-menu p{
 	align-content: center;
+	margin: 0px;
+	padding-inline: 10px;
+	margin-block: 5px;
+}
+.head-menu p:hover {
+	background-color: #C0A02B;
 }
 
 .searching {

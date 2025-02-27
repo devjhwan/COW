@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset = "utf-8">
-		<title>COW práctica 1</title>
-		<link rel="stylesheet" href="bootstrap-4.3.1_v2/css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/index.css">
-		<script src="bootstrap-4.3.1_v2/js/jquery.min.js"></script>
-		<script src="bootstrap-4.3.1_v2/js/popper.min.js"></script>
-		<script src="bootstrap-4.3.1_v2/js/bootstrap.min.js"></script>
-	</head>
-	<body>
-		<header class="container-fluid bg-gold">
-			<nav class="navbar navbar-expand-lg navbar-light">
+  <head>
+    <meta charset = "utf-8">
+    <title>COW práctica 1</title>
+    <link rel="stylesheet" href="bootstrap-4.3.1_v2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="bootstrap-4.3.1_v2/js/jquery.min.js"></script>
+    <script src="bootstrap-4.3.1_v2/js/popper.min.js"></script>
+    <script src="bootstrap-4.3.1_v2/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <header class="container-fluid bg-gold">
+      <nav class="navbar navbar-expand-lg navbar-light">
         <span class="navbar-brand mb-0 h1">WebSiteName</span>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -33,40 +33,56 @@
           </ul>
         </div>
       </nav>
-		</header>
-		<div class="searching center-item">
-			<div class="search-bar-background center-item bg-gold rounded">
+    </header>
+    <div class="searching center-item">
+      <div class="search-bar-background center-item bg-gold rounded">
           <form class="search-bar d-flex flex-fill" target="_blank" action="http://www.google.com/search">
             <input class="form-control flex-grow-1" type="text" name="q" value="" id="search-input">
             <input class="btn btn-primary" type="submit" value="Search" id="search-button">
           </form>
-			</div>
-		</div>
-		<div class="container">
-			<h2 id="card-list-title"s>Top rated ★★★★★</h2>
-			<ul>
-				<li>
-					<img src="assets/house1.jpg" alt="House 1">
-					<p>House 1</p>
-				</li>
-				<li>
-					<img src="assets/house2.jpg" alt="House 2">
-					<p>House 2</p>
-				</li>
-				<li>
-					<img src="assets/house3.jpg" alt="House 3">
-					<p>House 3</p>
-				</li>
-				<li>
-					<img src="assets/house4.jpg" alt="House 4">
-					<p>House 4</p>
-				</li>
-			</ul>			
-		</div>
-		<footer>
-			<div>
-				<p>Author: JungHwan Lee</p>
-			</div>
-		</footer>
-	</body>
+      </div>
+    </div>
+    <div class="container">
+      <h2 id="card-list-title"s>Top rated ★★★★★</h2>
+			<ul class="list-group list-group-horizontal">
+				<li class="list-group-item">
+          <div class="card">
+            <img src="assets/house1.jpg" class="card-img-top" alt="House 1">
+            <div class="card-body">
+              <h5 class="card-title">House 1</h5>
+            </div>
+          </div>
+        </li>
+				<li class="list-group-item">
+          <div class="card">
+            <img src="assets/house2.jpg" class="card-img-top" alt="House 2">
+            <div class="card-body">
+              <h5 class="card-title">House 2</h5>
+            </div>
+          </div>
+        </li>
+				<li class="list-group-item">
+          <div class="card border rounded">
+            <img src="assets/house3.jpg" class="card-img-top" alt="House 3">
+            <div class="card-body">
+              <h5 class="card-title">House 3</h5>
+            </div>
+          </div>
+        </li>
+				<li class="list-group-item">
+          <div class="card">
+            <img src="assets/house4.jpg" class="card-img-top" alt="House 4">
+            <div class="card-body">
+              <h5 class="card-title">House 4</h5>
+            </div>
+          </div>
+        </li>
+      </ul>      
+    </div>
+    <footer class="footer mt-auto py-3 bg-beige">
+      <div class="container">
+        <span class="text-muted">Author: JungHwan Lee</span>
+      </div>
+    </footer>
+  </body>
 </html>

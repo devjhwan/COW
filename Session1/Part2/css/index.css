@@ -34,6 +34,12 @@ body {
 #card-list-title {
 	margin-top: 40px;
 	font-size: 1.2em;
+	font-weight: bold;
+}
+
+li.list-group-item {
+	border: none;
+	padding: 12px;
 }
 
 .bg-dark-blue	{ background-color: #333D51; }

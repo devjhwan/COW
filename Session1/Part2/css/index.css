@@ -22,8 +22,30 @@ body {
 }
 
 .search-bar-background {
-	height: 45px;
-	width: 650px;
+    height: 45px;
+    width: 640px;
+}
+
+@media (max-width: 800px) {
+    .search-bar-background {
+        width: calc(96vw - 128px);
+        position: relative;
+        left: calc(48vw - 384px);
+    }
+}
+
+@media (max-width: 575px) {
+    .search-bar-background {
+        width: 80vw;
+        position: absolute;
+        left: 20px;
+    }
+}
+
+@media (max-width: 400px) {
+    .search-bar-background {
+        width: 320px;
+    }
 }
 
 .search-bar {

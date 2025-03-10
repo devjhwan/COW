@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="../bootstrap-4.3.1_v2/css/bootstrap.min.css">
 </head>
 <body>
-
 <div class="container d-flex justify-content-center align-items-center vh-100">
     <div class="card p-4 shadow-lg" style="max-width: 400px; width: 100%;">
         <h2 class="text-center mb-4">Reservation Form</h2>
@@ -21,9 +20,9 @@
         if (isset($_GET['error'])) {
             $error_code = $_GET['error'];
             if ($error_code == "1") {
-                $error_msg = "First Name is required.";
+                $error_msg = "First Name is invalid.";
             } elseif ($error_code == "2") {
-                $error_msg = "Last Name is required.";
+                $error_msg = "Last Name is invalid.";
             } elseif ($error_code == "3") {
                 $error_msg = "Invalid Document ID format.";
             }
@@ -36,12 +35,10 @@
                 <label for="last_name">Last Name</label>
                 <input type="text" class="form-control" id="last_name" name="last_name" value="<?php echo $last_name; ?>" required>
             </div>
-
             <div class="form-group">
                 <label for="first_name">First Name</label>
                 <input type="text" class="form-control" id="first_name" name="first_name" value="<?php echo $first_name; ?>" required>
             </div>
-
             <div class="form-group">
                 <label for="doc_type">Document Type</label>
                 <select class="form-control" id="doc_type" name="doc_type" required>
@@ -50,17 +47,14 @@
                     <option value="PASSPORT" <?php if ($doc_type == "PASSPORT") echo "selected"; ?>>Passport</option>
                 </select>
             </div>
-
             <div class="form-group">
                 <label for="doc_id">Document ID</label>
                 <input type="text" class="form-control" id="doc_id" name="doc_id" value="<?php echo $doc_id; ?>" required>
             </div>
-
             <button type="submit" class="btn btn-primary btn-block">Reserve</button>
             <a href="../index.html" class="btn btn-secondary btn-block mt-2">Go Back</a>
         </form>
     </div>
 </div>
-
 </body>
 </html>

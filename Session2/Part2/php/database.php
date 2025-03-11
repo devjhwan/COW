@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Database Viewer</title>
+    <link rel="stylesheet" href="../bootstrap-4.3.1_v2/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+      <div class="card p-4 shadow-lg" style="max-width: 400px; width: 100%;">
+        <h2 class="text-center mb-4">Database Viewer</h2>
+        <form method="GET" action="tables.php">
+          <div class="form-group">
+            <label for="database">Select a Database</label>
+            <select class="form-control" id="database" name="database" required>
+              <option value="" selected disabled>Select a Database</option>
+              <option value="hotel">Hotel</option>
+              <option value="imdb_small">IMDB Small</option>
+              <option value="simpsons">Simpsons</option>
+              <option value="world">World</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Connect</button>
+          <a href="../index.html" class="btn btn-secondary btn-block mt-2">Go Back</a>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

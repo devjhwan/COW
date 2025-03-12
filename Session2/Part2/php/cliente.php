@@ -58,7 +58,7 @@ $selected_country_code = isset($_GET['code']) ? $_GET['code'] : (isset($form_dat
 
 $cities = [];
 if (!empty($selected_country_code)) {
-  $sql = "SELECT name FROM cities WHERE country_code = '$selected_country_code' AND name IS NOT NULL AND name <> ''";
+  $sql = "SELECT name FROM cities WHERE country_code = '$selected_country_code'";
   $result = mysqli_query($conn, $sql);
   while ($row = mysqli_fetch_assoc($result)) {
     $cities[] = $row['name'];

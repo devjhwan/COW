@@ -41,8 +41,6 @@ if ($conn->query($sql) === FALSE) {
 $sql = "CREATE TABLE IF NOT EXISTS reservations (
   id INT AUTO_INCREMENT PRIMARY KEY,
   client_id INT NOT NULL,
-  country_code VARCHAR(5) NOT NULL,
-  country_name VARCHAR(100) NOT NULL,
   city VARCHAR(100) NOT NULL,
   FOREIGN KEY (client_id) REFERENCES clients(client_id) ON DELETE CASCADE
 )";
@@ -55,8 +53,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $last_name = trim($_POST["last_name"]);
   $doc_type = trim($_POST["doc_type"]);
   $doc_id = strtoupper(trim($_POST["doc_id"]));
-  $country_code = trim($_POST["country_code"]);
-  $country_name = trim($_POST["country_name"]);
   $city = trim($_POST["city"]);
 
   $sql = "SELECT client_id FROM clients WHERE doc_type = '$doc_type' AND doc_id = '$doc_id'";
@@ -73,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $client_id = $row["client_id"];
   }
 
-  $sql = "INSERT INTO reservations (client_id, country_code, country_name, city) VALUES ('$client_id', '$country_code', '$country_name', '$city')";
+  $sql = "INSERT INTO reservations (client_id, city) VALUES ('$client_id', '$city')";
   if ($conn->query($sql) === FALSE) {
     die("Error inserting reservation: " . $conn->error);
   }

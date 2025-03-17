@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservation Form</title>
+    <link rel="stylesheet" href="../bootstrap-4.3.1_v2/css/bootstrap.min.css">
+    <script src="../scriptaculous-js-1.9.0/lib/prototype.js"></script>
+    <script src="../scriptaculous-js-1.9.0/src/scriptaculous.js"></script>
+    <script src="../js/reserve_form_validation.js"></script>
+</head>
+<body>
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="card p-4 shadow-lg" style="max-width: 400px; width: 100%;">
+            <h2 class="text-center mb-4">Reservation Form</h2>
+            <div id="alert-box" class="alert alert-danger text-center" style="display:none;"></div>
+            <form action="../php/servidor.php" method="post">
+                <div class="form-group">
+                    <label for="last_name">Last Name</label>
+                    <input type="text" class="form-control" id="last_name" name="last_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="first_name">First Name</label>
+                    <input type="text" class="form-control" id="first_name" name="first_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="doc_type">Document Type</label>
+                    <select class="form-control" id="doc_type" name="doc_type" required>
+                        <option value="DNI">DNI</option>
+                        <option value="NIE">NIE</option>
+                        <option value="PASSPORT">Passport</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="doc_id">Document ID</label>
+                    <input type="text" class="form-control" id="doc_id" name="doc_id" required>
+                </div>
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <select class="form-control" id="city" name="city" required>
+                        <option value="">-</option>
+                    </select>
+                    <script>
+						function insertCities(jsonData) {
+							var citySelect = document.getElementById("city");
+				
+							citySelect.innerHTML = '<option value="">-</option>';
+				
+							var cities = JSON.parse(jsonData);
+							for (var i = 0; i < cities.length; i++) {
+								document.getElementById("city").innerHTML += '<option value=' + cities[i] + '>' + cities[i] + '</option>';
+							}
+						}
+					</script>
+					<script src="../php/get_city_list.php?country_code=ESP"></script>
+                </div>
+                <button type="submit" id="reserve-btn" class="btn btn-primary btn-block">Reserve</button>
+                <a href="../index.html" class="btn btn-secondary btn-block mt-2">Go Back</a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

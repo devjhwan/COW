@@ -1,0 +1,62 @@
+/*
+###############################################################################
+#                                                                             #
+#   Author: JungHwan Lee                                                      #
+#   Submission Deadline: 17rd March                                           #
+#   Niub: 20467554                                                            #
+#                                                                             #
+###############################################################################
+*/
+
+/* 
+  color image set
+  reference from https://www.shutterstock.com/ko/blog/10-gorgeous-color-schemes-for-websites/
+  333D51 / D3AC2B / CBD0D8 / F4F3EA
+*/
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  min-width: 800px;
+  margin: 0px;
+}
+
+.nav-item:hover {
+  background-color: #C0A02B;
+}
+
+.searching {
+  height: 300px;
+  background-image: url("../assets/city-image.jpg");
+  background-size: cover;
+  background-position-y: 80%;
+}
+
+.search-bar-background {
+  padding-block: 3px
+}
+
+.search-bar {
+  gap: 5px;
+  margin-inline: 2.5px;
+}
+
+#reserve-button {
+  width: 200px;
+}
+
+#card-list-title {
+  margin-top: 40px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+li.list-group-item {
+  border: none;
+  padding: 12px;
+}
+
+.bg-dark-blue   { background-color: #333D51; }
+.bg-gold        { background-color: #D3AC2B; }
+.bg-link-water  { background-color: #CBD0D8; }
+.bg-beige       { background-color: #F4F3EA; }
+.center-item    { display: flex; justify-content: center; align-items: center; }

@@ -1,3 +1,13 @@
+<!--
+###############################################################################
+#                                                                             #
+#   Author: JungHwan Lee                                                      #
+#   Submission Deadline: 31th March                                           #
+#   Niub: 20467554                                                            #
+#                                                                             #
+###############################################################################
+-->
+
 <?php
 header("Content-Type: application/javascript; charset=UTF-8");
 

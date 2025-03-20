@@ -1,4 +1,19 @@
+/*
+###############################################################################
+#                                                                             #
+#   Author: JungHwan Lee                                                      #
+#   Submission Deadline: 31th March                                           #
+#   Niub: 20467554                                                            #
+#                                                                             #
+###############################################################################
+*/
+
 document.observe("dom:loaded", function () {
+    Sortable.create("sortable", {
+        tag: "li",
+        constraint: "horizontal"
+    });
+
     $$("div.card").each(function (card) {
         var originalWidth = card.getWidth();
         var originalHeight = card.getHeight();

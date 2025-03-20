@@ -1,3 +1,13 @@
+/*
+###############################################################################
+#                                                                             #
+#   Author: JungHwan Lee                                                      #
+#   Submission Deadline: 31th March                                           #
+#   Niub: 20467554                                                            #
+#                                                                             #
+###############################################################################
+*/
+
 document.observe("dom:loaded", function () {
     $("first_name").observe("keyup", validateFirstName);
     $("last_name").observe("keyup", validateLastName);

@@ -10,7 +10,6 @@
       <div class="row w-100">
         <div class="col-md-6 d-flex justify-content-center">
           <?php 
-            $selected_country = isset($_GET['country']) ? $_GET['country'] : ""; 
             include '../html/reserve.html'; 
           ?>
         </div>

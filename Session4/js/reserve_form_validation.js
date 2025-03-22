@@ -22,19 +22,33 @@ document.observe("dom:loaded", function () {
     });
 });
 
-function showAlert(message, element) {
-    var alertBox = $("alert-box");
-    alertBox.innerHTML = message;
-    alertBox.appear({ duration: 0.3 });
+let alertTimer = null;
+const DELAY = 1000;
 
-    if (element) {
-        $(element).setStyle({ border: "2px solid red" });
-        $(element).shake();
+function showAlert(message, element) {
+    if (alertTimer) {
+        clearTimeout(alertTimer);
     }
+
+    alertTimer = setTimeout(function () {
+        var alertBox = $("alert-box");
+        alertBox.innerHTML = message;
+        alertBox.appear({ duration: 0.3 });
+
+        if (element) {
+            $(element).setStyle({ border: "2px solid red" });
+            $(element).shake();
+        }
+    }, DELAY);
 }
 
 function hideAlert() {
     $("alert-box").fade({ duration: 0.3 });
+
+    if (alertTimer) {
+        clearTimeout(alertTimer);
+        alertTimer = null;
+    }
 }
 
 function resetBorder(element) {

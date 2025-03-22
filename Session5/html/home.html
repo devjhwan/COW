@@ -1,0 +1,102 @@
+<!--
+###############################################################################
+#                                                                             #
+#   Author: JungHwan Lee                                                      #
+#   Submission Deadline: 31th March                                           #
+#   Niub: 20467554                                                            #
+#                                                                             #
+###############################################################################
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset = "utf-8">
+    <title>COW práctica 2</title>
+    <link rel="stylesheet" href="../bootstrap-4.3.1_v2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <script src="../bootstrap-4.3.1_v2/js/jquery.min.js"></script>
+    <script src="../bootstrap-4.3.1_v2/js/popper.min.js"></script>
+    <script src="../bootstrap-4.3.1_v2/js/bootstrap.min.js"></script>
+    <script src="../scriptaculous-js-1.9.0/lib/prototype.js"></script>
+    <script src="../scriptaculous-js-1.9.0/src/scriptaculous.js"></script>
+    <script src="../js/home.js"></script>
+  </head>
+  <body>
+    <header class="container-fluid bg-gold">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <span class="navbar-brand mb-0 h1">WebSiteName</span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Menu 1</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Menu 2</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Menu 3</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <div class="searching center-item">
+      <div class="search-bar-background center-item bg-gold rounded">
+          <form class="search-bar d-flex flex-fill" action="../php/main.php">
+            <input class="btn btn-primary btn-lg" type="submit" value="Reserve" id="reserve-button">
+          </form>
+      </div>
+    </div>
+    <div class="container">
+      <h2 id="card-list-title"s>Top rated ★★★★★</h2>
+      <div id="sortable-container">
+        <ul id="sortable" class="list-group list-group-horizontal">
+          <li id="house1" class="list-group-item">
+            <div class="card">
+              <img src="../assets/house1.jpg" class="card-img-top" alt="House 1">
+              <div class="card-body">
+                <h5 class="card-title">House 1</h5>
+              </div>
+            </div>
+          </li>
+          <li id="house2" class="list-group-item">
+            <div class="card">
+              <img src="../assets/house2.jpg" class="card-img-top" alt="House 2">
+              <div class="card-body">
+                <h5 class="card-title">House 2</h5>
+              </div>
+            </div>
+          </li>
+          <li id="house3" class="list-group-item">
+            <div class="card">
+              <img src="../assets/house3.jpg" class="card-img-top" alt="House 3">
+              <div class="card-body">
+                <h5 class="card-title">House 3</h5>
+              </div>
+            </div>
+          </li>
+          <li id="house4" class="list-group-item">
+            <div class="card">
+              <img src="../assets/house4.jpg" class="card-img-top" alt="House 4">
+              <div class="card-body">
+                <h5 class="card-title">House 4</h5>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>          
+    </div>
+    <footer class="footer mt-auto py-3 bg-beige">
+      <div class="container">
+        <span class="text-muted">Author: JungHwan Lee</span>
+      </div>
+    </footer>
+  </body>
+</html>

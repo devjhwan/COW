@@ -16,7 +16,7 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  min-width: 800px;
+  min-width: 420px;
   margin: 0px;
 }
 
@@ -32,6 +32,7 @@ body {
 }
 
 .search-bar-background {
+  width: 800px;
   padding-block: 3px
 }
 
@@ -40,9 +41,30 @@ body {
   margin-inline: 2.5px;
 }
 
-#reserve-button {
-  width: 200px;
+.input-field {
+  flex-basis: 19.3%
 }
+
+@media (max-width: 1000px) {
+  .search-bar-background {
+      width: 70vw;
+      padding-block: 3px
+  }
+  .input-field {
+    flex-basis: 49%
+  }
+}
+
+@media (max-width: 600px) {
+  .search-bar-background {
+      width: 360px;
+      padding-block: 3px
+  }
+  .input-field {
+    flex-basis: 100%
+  }
+}
+
 
 #card-list-title {
   margin-top: 40px;

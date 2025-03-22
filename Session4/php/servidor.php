@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <li class="list-group-item"><strong>City:</strong> <?php echo htmlspecialchars($city); ?></li>
           <li class="list-group-item"><strong>Reservation Date:</strong> <?php echo htmlspecialchars($reservation_date); ?></li>
         </ul>
-        <a href="../html/reserve.html" class="btn btn-primary mt-3">Go Back</a>
+        <a href="main.php" class="btn btn-primary mt-3">Go Back</a>
       </div>
     </div>
   </body>

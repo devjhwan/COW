@@ -1,13 +1,3 @@
-<!--
-###############################################################################
-#                                                                             #
-#   Author: JungHwan Lee                                                      #
-#   Submission Deadline: 17th March                                           #
-#   Niub: 20467554                                                            #
-#                                                                             #
-###############################################################################
--->
-
 <?php
 
 //Create hotel database if it doesn't exists.
@@ -151,7 +141,7 @@ $conn->close();
         </a>
       </div>
 
-      <a href="../html/reserve.html" class="btn btn-secondary">Go to Reserve</a>
+      <a href="main.php" class="btn btn-secondary">Go Back</a>
     </div>
 
       <?php else: ?>

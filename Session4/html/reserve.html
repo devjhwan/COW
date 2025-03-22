@@ -53,13 +53,9 @@
 						function insertCities(jsonData) {
                             var cityInput = document.getElementById("city");
                             var suggestionBox = document.getElementById("city_suggestions");
-				
 							var cities = JSON.parse(jsonData);
-                            new Autocompleter.Local(cityInput, suggestionBox, cities, {
-                                minChars: 1,
-                                choices: 5
-                            })
-						}
+                            new Autocompleter.Local(cityInput, suggestionBox, cities)
+                        }
 					</script>
 					<script src="../php/get_city_list.php?country_code=ESP"></script>
                 </div>

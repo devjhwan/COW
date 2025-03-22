@@ -19,3 +19,23 @@
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	border-radius: 5px;
 }
+
+.autocomplete-suggestions ul {
+	padding-left: 20px;
+}
+
+.autocomplete-suggestions li {
+    list-style-type: none;
+    margin: 0;
+    padding: 4px 6px;
+    cursor: pointer;
+}
+
+.autocomplete-suggestions li:hover {
+    background-color: #f0f0f0;
+}
+
+.card-width {
+	max-width: 600px;
+	width: 100%;
+}

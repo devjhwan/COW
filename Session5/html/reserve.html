@@ -18,6 +18,7 @@
     <script src="../scriptaculous-js-1.9.0/lib/prototype.js"></script>
     <script src="../scriptaculous-js-1.9.0/src/scriptaculous.js"></script>
     <script src="../js/reserve_form_validation.js"></script>
+    <script src="../js/set_hidden_values.js"></script>
 </head>
 <body>
     <div class="container d-flex justify-content-center align-items-center vh-100">
@@ -25,6 +26,10 @@
             <h2 class="text-center mb-4">Reservation Form</h2>
             <div id="alert-box" class="alert alert-danger text-center" style="display:none;"></div>
             <form action="../php/server.php" method="post">
+                <input type="hidden" name="country" id="hidden-country">
+                <input type="hidden" name="city" id="hidden-city">
+                <input type="hidden" name="start_date" id="hidden-start-date">
+                <input type="hidden" name="end_date" id="hidden-end-date">
                 <div class="form-group">
                     <label for="last_name">Last Name</label>
                     <input type="text" class="form-control" id="last_name" name="last_name" required>
@@ -44,20 +49,6 @@
                 <div class="form-group">
                     <label for="doc_id">Document ID</label>
                     <input type="text" class="form-control" id="doc_id" name="doc_id" required>
-                </div>
-                <div class="form-group position-relative">
-                    <label for="city">City</label>
-                    <input type="text" class="form-control" id="city" name="city" autocomplete="off">
-                    <div id="city_suggestions" class="autocomplete-suggestions"></div>
-                    <script>
-						function insertCities(jsonData) {
-                            var cityInput = document.getElementById("city");
-                            var suggestionBox = document.getElementById("city_suggestions");
-							var cities = JSON.parse(jsonData);
-                            new Autocompleter.Local(cityInput, suggestionBox, cities)
-                        }
-					</script>
-					<script src="../php/get_city_list.php?country_code=ESP"></script>
                 </div>
                 <button type="submit" id="reserve-btn" class="btn btn-primary btn-block">Reserve</button>
                 <a href="../html/home.html" class="btn btn-secondary btn-block mt-2">Go Back</a>

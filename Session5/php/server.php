@@ -1,13 +1,13 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $last_name = trim($_POST["last_name"]);
   $first_name = trim($_POST["first_name"]);
+  $last_name = trim($_POST["last_name"]);
   $doc_type = trim($_POST["doc_type"]);
   $doc_id = strtoupper(trim($_POST["doc_id"]));
   $city = trim($_POST["city"]);
-
-  date_default_timezone_set("UTC");
-  $reservation_date = date("Y-m-d H:i:s");
+  $country = trim($_POST["country"]);
+  $start_date = trim($_POST["start_date"]);
+  $end_date = trim($_POST["end_date"]);
 
   include "manage_reservation.php"
 ?>
@@ -27,8 +27,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <li class="list-group-item"><strong>First Name:</strong> <?php echo htmlspecialchars($first_name); ?></li>
           <li class="list-group-item"><strong>Document Type:</strong> <?php echo htmlspecialchars($doc_type); ?></li>
           <li class="list-group-item"><strong>Document ID:</strong> <?php echo htmlspecialchars($doc_id); ?></li>
+          <li class="list-group-item"><strong>Country:</strong> <?php echo htmlspecialchars($country); ?></li>
           <li class="list-group-item"><strong>City:</strong> <?php echo htmlspecialchars($city); ?></li>
-          <li class="list-group-item"><strong>Reservation Date:</strong> <?php echo htmlspecialchars($reservation_date); ?></li>
+          <li class="list-group-item"><strong>Reservation Date:</strong>
+          <?php echo htmlspecialchars($start_date); echo " / "; echo htmlspecialchars($end_date); ?>
+          </li>
         </ul>
         <a href="main.php" class="btn btn-primary mt-3">Go Back</a>
       </div>

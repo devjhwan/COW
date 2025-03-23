@@ -9,9 +9,7 @@
     <div class="container d-flex justify-content-center align-items-center vh-100">
       <div class="row w-100">
         <div class="col-md-6 d-flex justify-content-center">
-          <?php 
-            include '../html/reserve.html'; 
-          ?>
+          <?php include '../html/reserve.html'; ?>
         </div>
         
         <div class="col-md-6 d-flex justify-content-center">

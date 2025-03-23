@@ -1,7 +1,7 @@
 <?php
 
 //Create hotel database if it doesn't exists.
-include "manage_reservation.php";
+include 'create_hotel_database.php';
 
 $servername = "localhost";
 $username = "root";

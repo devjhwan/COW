@@ -1,15 +1,7 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $first_name = trim($_POST["first_name"]);
-  $last_name = trim($_POST["last_name"]);
-  $doc_type = trim($_POST["doc_type"]);
-  $doc_id = strtoupper(trim($_POST["doc_id"]));
-  $city = trim($_POST["city"]);
-  $country = trim($_POST["country"]);
-  $start_date = trim($_POST["start_date"]);
-  $end_date = trim($_POST["end_date"]);
-
   include "manage_reservation.php"
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,6 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <div class="card p-4 shadow-lg">
         <h2 class="text-center mb-4">Reservation Details</h2>
         <ul class="list-group">
+          <li class="list-group-item"><strong>Reservation Code:</strong> <?php echo htmlspecialchars($reservation_code); ?></li>
           <li class="list-group-item"><strong>Last Name:</strong> <?php echo htmlspecialchars($last_name); ?></li>
           <li class="list-group-item"><strong>First Name:</strong> <?php echo htmlspecialchars($first_name); ?></li>
           <li class="list-group-item"><strong>Document Type:</strong> <?php echo htmlspecialchars($doc_type); ?></li>

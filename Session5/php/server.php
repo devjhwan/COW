@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <?php echo htmlspecialchars($start_date); echo " / "; echo htmlspecialchars($end_date); ?>
           </li>
         </ul>
-        <a href="main.php" class="btn btn-primary mt-3">Go Back</a>
+        <a href="../html/home.html" class="btn btn-primary mt-3">Go Home</a>
       </div>
     </div>
   </body>

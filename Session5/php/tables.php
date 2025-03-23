@@ -141,7 +141,7 @@ $conn->close();
         </a>
       </div>
 
-      <a href="main.php" class="btn btn-secondary">Go Back</a>
+      <a href="../html/database.html" class="btn btn-secondary">Go Back</a>
     </div>
 
       <?php else: ?>

@@ -12,25 +12,23 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Database Viewer</title>
+    <title>Check Reservation</title>
     <link rel="stylesheet" href="../bootstrap-4.3.1_v2/css/bootstrap.min.css">
   </head>
   <body>
     <div class="container d-flex justify-content-center align-items-center vh-100">
       <div class="card p-4 shadow-lg" style="max-width: 400px; width: 100%;">
-        <h2 class="text-center mb-4">Database Viewer</h2>
-        <form method="GET" action="../php/tables.php">
+        <h2 class="text-center mb-4">Check Reservation</h2>
+        <form method="GET" action="../php/server.php">
           <div class="form-group">
-            <label for="database">Select a Database</label>
-            <select class="form-control" id="database" name="database" required>
-              <option value="" selected disabled>Select a Database</option>
-              <option value="hotel">Hotel</option>
-              <option value="imdb_small">IMDB Small</option>
-              <option value="simpsons">Simpsons</option>
-              <option value="world">World</option>
-            </select>
+              <label for="last_name">Reservation Code</label>
+              <input type="text" class="form-control" id="reservation_code" name="reservation_code">
           </div>
-          <button type="submit" class="btn btn-primary btn-block">Connect</button>
+          <div class="form-group">
+              <label for="last_name">Last Name</label>
+              <input type="text" class="form-control" id="last_name" name="last_name">
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Check</button>
           <a href="home.html" class="btn btn-secondary btn-block mt-2">Go Home</a>
         </form>
       </div>

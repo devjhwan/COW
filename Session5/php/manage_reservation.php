@@ -8,9 +8,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $dbname = "hotel";
 
   $conn = new mysqli($servername, $username, $password, $dbname);
-
   if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
+  }
+  $conn->set_charset("utf8");
+
+  session_start();
+  $user_id_value = 'NULL';
+
+  if (isset($_SESSION['user_id'])) {
+    $session_user_id = $conn->real_escape_string($_SESSION['user_id']);
+    $user_result = $conn->query("SELECT id FROM users WHERE user_id = '$session_user_id'");
+    if ($user_result && $user_result->num_rows > 0) {
+      $user_row = $user_result->fetch_assoc();
+      $user_id_value = (int)$user_row['id'];
+    }
   }
 
   $first_name = trim($_POST["first_name"]);
@@ -26,7 +38,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $result = $conn->query($sql);
 
   if ($result->num_rows == 0) {
-    $sql = "INSERT INTO clients (first_name, last_name, doc_type, doc_id) VALUES ('$first_name', '$last_name', '$doc_type', '$doc_id')";
+    if ($user_id_value === 'NULL') {
+      $sql = "SELECT client_id FROM clients 
+              WHERE doc_type = '$doc_type' AND doc_id = '$doc_id' AND user_id IS NULL";
+    } else {
+      $sql = "SELECT client_id FROM clients 
+              WHERE doc_type = '$doc_type' AND doc_id = '$doc_id' AND user_id = $user_id_value";
+    }
     if ($conn->query($sql) === FALSE) {
       die("Error inserting client: " . $conn->error);
     }

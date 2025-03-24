@@ -17,12 +17,24 @@ if ($conn->query($sql) === FALSE) {
 
 $conn->select_db($dbname);
 
+$sql = "CREATE TABLE IF NOT EXISTS users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id VARCHAR(20) NOT NULL UNIQUE,
+  password VARCHAR(30) NOT NULL
+)";
+if ($conn->query($sql) === FALSE) {
+  die("Error creating table 'clients': " . $conn->error);
+}
+
 $sql = "CREATE TABLE IF NOT EXISTS clients (
   client_id INT AUTO_INCREMENT PRIMARY KEY,
   first_name VARCHAR(50) NOT NULL,
   last_name VARCHAR(50) NOT NULL,
   doc_type ENUM('DNI', 'NIE', 'PASSPORT') NOT NULL,
-  doc_id VARCHAR(20) NOT NULL UNIQUE
+  doc_id VARCHAR(20) NOT NULL,
+  user_id INT,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  UNIQUE KEY unique_client_per_user (user_id, doc_type, doc_id)
 )";
 if ($conn->query($sql) === FALSE) {
   die("Error creating table 'clients': " . $conn->error);

@@ -5,21 +5,21 @@ document.observe("dom:loaded", function () {
   startInput.observe("change", handleStartDateChange);
 
   function initializeStartDate() {
-  var today = new Date().toISOString().split("T")[0];
-  startInput.setAttribute("min", today);
-  endInput.setAttribute("min", today);
+    var today = new Date().toISOString().split("T")[0];
+    startInput.setAttribute("min", today);
+    endInput.setAttribute("min", today);
   }
 
   function handleStartDateChange() {
-  var startValue = startInput.value;
+    var startValue = startInput.value;
 
-  if (startValue) {
-    endInput.setAttribute("min", startValue);
+    if (startValue) {
+      endInput.setAttribute("min", startValue);
 
-    if (endInput.value && endInput.value < startValue) {
-    endInput.value = "";
+      if (endInput.value && endInput.value < startValue) {
+      endInput.value = "";
+      }
     }
-  }
   }
 
   initializeStartDate();

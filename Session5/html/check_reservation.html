@@ -14,12 +14,18 @@
     <meta charset="UTF-8">
     <title>Check Reservation</title>
     <link rel="stylesheet" href="../bootstrap-4.3.1_v2/css/bootstrap.min.css">
+    <script src="../bootstrap-4.3.1_v2/js/jquery.min.js"></script>
+    <script src="../bootstrap-4.3.1_v2/js/popper.min.js"></script>
+    <script src="../bootstrap-4.3.1_v2/js/bootstrap.min.js"></script>
+    <script src="../scriptaculous-js-1.9.0/lib/prototype.js"></script>
+    <script src="../scriptaculous-js-1.9.0/src/scriptaculous.js"></script>
+    <script src="../js/set_reservation_info.js"></script>
   </head>
   <body>
     <div class="container d-flex justify-content-center align-items-center vh-100">
-      <div class="card p-4 shadow-lg" style="max-width: 400px; width: 100%;">
+      <div id="check-reservation" class="card p-4 shadow-lg card-width">
         <h2 class="text-center mb-4">Check Reservation</h2>
-        <form method="GET" action="../php/server.php">
+        <form>
           <div class="form-group">
               <label for="last_name">Reservation Code</label>
               <input type="text" class="form-control" id="reservation_code" name="reservation_code">
@@ -28,10 +34,27 @@
               <label for="last_name">Last Name</label>
               <input type="text" class="form-control" id="last_name" name="last_name">
           </div>
-          <button type="submit" class="btn btn-primary btn-block">Check</button>
+          <button type="button" id="check-button" class="btn btn-primary btn-block">Check</button>
           <a href="home.html" class="btn btn-secondary btn-block mt-2">Go Home</a>
         </form>
       </div>
     </div>
+    <div id="result-card" class="card p-4 shadow-lg position-absolute card-width result-card-style" style="display: none;">
+      <h4 class="mb-3">Reservation Info</h4>
+      <p><strong>Name:</strong> John Doe</p>
+      <p><strong>Reservation Code:</strong> ABC123</p>
+    </div>
   </body>
+  <style>
+    .card-width {
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .result-card-style {
+      top: 50%;
+      left: 55%;
+      transform: translateY(-50%);
+    }
+  </style>
 </html>

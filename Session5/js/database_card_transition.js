@@ -10,14 +10,15 @@ function transformCardContainer() {
     if (toggled) return;
     toggled = true;
 
-    $("card-container").removeClassName("p-4");
-    $("card-container").setStyle({
-      transform: "translate(0, 0)",
-      margin: "20px 20px",
-      padding: "10px 20px"
+    new Effect.Fade("page-container", {
+      duration: 0.50,
+      afterFinish: function () {
+        setTimeout(alignCardRow, 50);
+        new Effect.Appear("page-container", {
+          duration: 0.4
+        });
+      }
     });
-
-    setTimeout(alignCardRow, 700);
   });
 }
 
@@ -26,6 +27,7 @@ function alignCardRow() {
   $("card-container").removeClassName("card-style");
   $("card-container").removeClassName("flex-column");
   $("card-container").removeClassName("shadow-lg");
+  $("card-container").removeClassName("p-4");
   $("card-container").addClassName("flex-row flex-wrap align-items-center");
   $("card-container").setStyle({
     transform: "",

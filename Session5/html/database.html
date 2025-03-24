@@ -22,7 +22,7 @@
     <script src="../js/database_card_transition.js"></script>
   </head>
   <body>
-    <div style="margin: 20px 20px;">
+    <div id="page-container" class="container mt-5">
       <div id="card-container" class="card p-4 shadow-lg d-flex flex-column flex-wrap card-style">
         <h2 class="text-center mb-4" id="card-title">Database Viewer</h2>
         <form id="db-form" method="GET" action="../php/tables.php">
@@ -52,7 +52,6 @@
       top: 0;
       left: 0;
       transform: translate(calc(50vw - 50%), calc(50vh - 50%));
-      transition: transform 0.7s ease;
     }
   </style>
 </html>

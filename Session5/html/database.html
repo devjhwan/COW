@@ -19,6 +19,7 @@
     <script src="../bootstrap-4.3.1_v2/js/bootstrap.min.js"></script>
     <script src="../scriptaculous-js-1.9.0/lib/prototype.js"></script>
     <script src="../scriptaculous-js-1.9.0/src/scriptaculous.js"></script>
+    <script src="../js/fetch_table_content.js"></script>
     <script src="../js/database_card_transition.js"></script>
   </head>
   <body>
@@ -41,6 +42,40 @@
             <a href="home.html" class="btn btn-secondary btn-block mt-2">Go Home</a>
           </div>
         </form>
+      </div>
+      <div id="table-container" style="display: none;">
+        <div class="container mt-5">
+          <h2 class="text-center">Database: <strong id="db-name"></strong></h2>
+    
+          <ul class="nav nav-tabs mt-4" id="table-tabs">
+            <!-- Table tabs go here -->
+          </ul>
+    
+          <div class="card p-4 shadow-lg mt-4">
+            <h4 class="text-center mb-4">Table: <strong id="selected-table-name"></strong></h4>
+    
+            <div class="table-responsive">
+              <table class="table table-sm table-bordered">
+                <thead class="thead-dark">
+                  <tr id="table-headers"></tr>
+                    <!-- Column headers go here -->
+                  </tr>
+                </thead>
+                <tbody id="table-body"></tbody>
+                  <!-- Table rows go here -->
+                </tbody>
+              </table>
+            </div>
+    
+            <div class="d-flex justify-content-between mt-3">
+              <div>
+                <button type="button" id="prev-button" class="btn btn-outline-primary">← Previous</button>
+                <button type="button" id="next-button" class="btn btn-outline-primary">Next →</button>
+              </div>
+              <a href="../html/database.html" class="btn btn-secondary">Go Back</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>

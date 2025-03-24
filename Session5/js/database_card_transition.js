@@ -1,24 +1,27 @@
 document.observe("dom:loaded", function () {
-  transformCardContainer();
-});
-
-function transformCardContainer() {
   var toggled = false;
 
   $("connect-button").observe("click", function (e) {
     e.preventDefault();
-    if (toggled) return;
-    toggled = true;
+    if (!toggled) {
+      transformCardContainer();
+      toggled = true;
+    }
+    const selectedDatabase = $('database').getValue();
+    fetchTableContent(selectedDatabase);
+  });
+});
 
-    new Effect.Fade("page-container", {
-      duration: 0.50,
-      afterFinish: function () {
-        setTimeout(alignCardRow, 50);
-        new Effect.Appear("page-container", {
-          duration: 0.4
-        });
-      }
-    });
+function transformCardContainer() {
+  new Effect.Fade("page-container", {
+    duration: 0.50,
+    afterFinish: function () {
+      setTimeout(alignCardRow, 50);
+      new Effect.Appear("page-container", {
+        duration: 0.4
+      });
+		  $('table-container').setStyle({ display: 'block' })
+    }
   });
 }
 

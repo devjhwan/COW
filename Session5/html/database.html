@@ -17,26 +17,42 @@
     <script src="../bootstrap-4.3.1_v2/js/jquery.min.js"></script>
     <script src="../bootstrap-4.3.1_v2/js/popper.min.js"></script>
     <script src="../bootstrap-4.3.1_v2/js/bootstrap.min.js"></script>
+    <script src="../scriptaculous-js-1.9.0/lib/prototype.js"></script>
+    <script src="../scriptaculous-js-1.9.0/src/scriptaculous.js"></script>
+    <script src="../js/database_card_transition.js"></script>
   </head>
   <body>
-    <div class="container d-flex justify-content-center align-items-center vh-100">
-      <div class="card p-4 shadow-lg" style="max-width: 400px; width: 100%;">
-        <h2 class="text-center mb-4">Database Viewer</h2>
-        <form method="GET" action="../php/tables.php">
-          <div class="form-group">
-            <label for="database">Select a Database</label>
-            <select class="form-control" id="database" name="database" required>
-              <option value="" selected disabled>Select a Database</option>
-              <option value="hotel">Hotel</option>
-              <option value="imdb_small">IMDB Small</option>
-              <option value="simpsons">Simpsons</option>
-              <option value="world">World</option>
-            </select>
+    <div style="margin: 20px 20px;">
+      <div id="card-container" class="card p-4 shadow-lg d-flex flex-column flex-wrap card-style">
+        <h2 class="text-center mb-4" id="card-title">Database Viewer</h2>
+        <form id="db-form" method="GET" action="../php/tables.php">
+          <div class="form-row d-flex flex-column flex-wrap" id="form-wrapper">
+            <div class="form-group">
+              <label for="database">Select a Database</label>
+              <select class="form-control" id="database" name="database" required>
+                <option value="" selected disabled>Select a Database</option>
+                <option value="hotel">Hotel</option>
+                <option value="imdb_small">IMDB Small</option>
+                <option value="simpsons">Simpsons</option>
+                <option value="world">World</option>
+              </select>
+            </div>
+            <button type="submit" id="connect-button" class="btn btn-primary btn-block">Connect</button>
+            <a href="home.html" class="btn btn-secondary btn-block mt-2">Go Home</a>
           </div>
-          <button type="submit" class="btn btn-primary btn-block">Connect</button>
-          <a href="home.html" class="btn btn-secondary btn-block mt-2">Go Home</a>
         </form>
       </div>
     </div>
   </body>
+  <style>
+    .card-style {
+      max-width: 400px;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translate(calc(50vw - 50%), calc(50vh - 50%));
+      transition: transform 0.7s ease;
+    }
+  </style>
 </html>

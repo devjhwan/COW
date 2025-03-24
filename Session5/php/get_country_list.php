@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
   
   $countries = [];
   $sql = "SELECT name, code FROM countries";
-  $result = $conn->query($conn, $sql);
+  $result = $conn->query($sql);
   if ($result) {
     while ($row = $result->fetch_assoc()) {
       $countries[] = $row;

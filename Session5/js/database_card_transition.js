@@ -23,18 +23,27 @@ function transformCardContainer() {
 		  $('table-container').setStyle({ display: 'block' })
     }
   });
+  new Effect.Fade("footer-container", {
+    duration: 0.50,
+    afterFinish: function () {
+      new Effect.Appear("footer-container", {
+        duration: 0.4
+      });
+    }
+  });
 }
 
 function alignCardRow() {
-  $("card-container").setStyle({ maxWidth: "720px" });
-  $("card-container").removeClassName("card-style");
-  $("card-container").removeClassName("flex-column");
+  $("card-layout").removeClassName("d-flex");
+  $("card-layout").removeClassName("justify-content-center");
+  $("card-layout").removeClassName("align-items-center");
+  $("card-layout").removeClassName("vh-100");
+  
   $("card-container").removeClassName("shadow-lg");
   $("card-container").removeClassName("p-4");
-  $("card-container").addClassName("flex-row flex-wrap align-items-center");
+  $("card-container").addClassName("d-flex flex-row flex-wrap align-items-center");
   $("card-container").setStyle({
-    transform: "",
-    maxWidth: "720px",
+    maxWidth: "700px",
     width: "100%",
     margin: "0px",
     padding: "10px 20px",
@@ -58,7 +67,7 @@ function alignCardRow() {
   const formGroup = $("form-wrapper").down(".form-group");
   formGroup.addClassName("d-flex flex-row align-items-center");
   formGroup.setStyle({
-    flex: "1 1 150px",
+    flex: "1 1 120px",
     marginBottom: "0"
   });
 

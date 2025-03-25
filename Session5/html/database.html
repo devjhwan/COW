@@ -21,30 +21,33 @@
     <script src="../scriptaculous-js-1.9.0/src/scriptaculous.js"></script>
     <script src="../js/fetch_table_content.js"></script>
     <script src="../js/database_card_transition.js"></script>
+    <script src="../js/load_includes.js"></script>
   </head>
   <body>
+    <div id="header-container"></div>
     <div id="page-container" class="container mt-5">
-      <div id="card-container" class="card p-4 shadow-lg d-flex flex-column flex-wrap card-style">
-        <h2 class="text-center mb-4" id="card-title">Database Viewer</h2>
-        <form id="db-form" method="GET" action="../php/tables.php">
-          <div class="form-row d-flex flex-column flex-wrap" id="form-wrapper">
-            <div class="form-group">
-              <label for="database">Select a Database</label>
-              <select class="form-control" id="database" name="database" required>
-                <option value="" selected disabled>Select a Database</option>
-                <option value="hotel">Hotel</option>
-                <option value="imdb_small">IMDB Small</option>
-                <option value="simpsons">Simpsons</option>
-                <option value="world">World</option>
-              </select>
+      <div id="card-layout" class="d-flex justify-content-center align-items-center vh-100">
+        <div id="card-container" class="card p-4 shadow-lg" style="max-width: 400px; width: 100%;">
+          <h2 class="text-center mb-4" id="card-title">Database Viewer</h2>
+          <form id="db-form">
+            <div class="form-row d-flex flex-column flex-wrap" id="form-wrapper">
+              <div class="form-group">
+                <label for="database">Select a Database</label>
+                <select class="form-control" id="database" name="database">
+                  <option value="hotel">Hotel</option>
+                  <option value="imdb_small">IMDB Small</option>
+                  <option value="simpsons">Simpsons</option>
+                  <option value="world">World</option>
+                </select>
+              </div>
+              <button type="submit" id="connect-button" class="btn btn-primary btn-block">Connect</button>
+              <a href="home.html" class="btn btn-secondary btn-block mt-2">Go Home</a>
             </div>
-            <button type="submit" id="connect-button" class="btn btn-primary btn-block">Connect</button>
-            <a href="home.html" class="btn btn-secondary btn-block mt-2">Go Home</a>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
       <div id="table-container" style="display: none;">
-        <div class="container mt-5">
+        <div class="container mt-5 mb-5">
           <h2 class="text-center">Database: <strong id="db-name"></strong></h2>
     
           <ul class="nav nav-tabs mt-4" id="table-tabs">
@@ -77,15 +80,6 @@
         </div>
       </div>
     </div>
+    <div id="footer-container"></div>
   </body>
-  <style>
-    .card-style {
-      max-width: 400px;
-      width: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      transform: translate(calc(50vw - 50%), calc(50vh - 50%));
-    }
-  </style>
 </html>

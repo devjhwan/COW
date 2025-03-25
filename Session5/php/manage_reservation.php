@@ -34,16 +34,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $start_date = trim($_POST["start_date"]);
   $end_date = trim($_POST["end_date"]);
 
-  $sql = "SELECT client_id FROM clients WHERE doc_type = '$doc_type' AND doc_id = '$doc_id'";
+  if ($user_id_value === 'NULL') {
+    $sql = "SELECT client_id FROM clients 
+            WHERE doc_type = '$doc_type' AND doc_id = '$doc_id' AND user_id IS NULL";
+  } else {
+    $sql = "SELECT client_id FROM clients 
+            WHERE doc_type = '$doc_type' AND doc_id = '$doc_id' AND user_id = $user_id_value";
+  }
   $result = $conn->query($sql);
 
   if ($result->num_rows == 0) {
     if ($user_id_value === 'NULL') {
-      $sql = "SELECT client_id FROM clients 
-              WHERE doc_type = '$doc_type' AND doc_id = '$doc_id' AND user_id IS NULL";
+      $sql = "INSERT INTO clients (first_name, last_name, doc_type, doc_id, user_id) 
+              VALUES ('$first_name', '$last_name', '$doc_type', '$doc_id', NULL)";
     } else {
-      $sql = "SELECT client_id FROM clients 
-              WHERE doc_type = '$doc_type' AND doc_id = '$doc_id' AND user_id = $user_id_value";
+      $sql = "INSERT INTO clients (first_name, last_name, doc_type, doc_id, user_id) 
+              VALUES ('$first_name', '$last_name', '$doc_type', '$doc_id', $user_id_value)";
     }
     if ($conn->query($sql) === FALSE) {
       die("Error inserting client: " . $conn->error);

@@ -23,7 +23,7 @@ $sql = "CREATE TABLE IF NOT EXISTS users (
   password VARCHAR(30) NOT NULL
 )";
 if ($conn->query($sql) === FALSE) {
-  die("Error creating table 'clients': " . $conn->error);
+  die("Error creating table 'users': " . $conn->error);
 }
 
 $sql = "CREATE TABLE IF NOT EXISTS clients (

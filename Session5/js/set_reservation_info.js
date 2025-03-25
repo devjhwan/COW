@@ -4,34 +4,33 @@ document.observe("dom:loaded", function () {
 
   $('check-button').observe('click', function () {
     if (!card_moved) {
-      card_translation_effect();
+      playCardTranslation();
       card_moved = true;
     }
-    get_reservation_info();
+    fetchReservationInfo();
   });
 
-  function get_reservation_info() {
-    var params = {
+  function fetchReservationInfo() {
+    const params = {
       reservation_code: $('reservation_code').value,
       last_name: $('last_name').value
     };
-    console.log(params)
+
     new Ajax.Request("../php/get_reservation_info.php", {
       method: "post",
       parameters: params,
-      onSuccess: function(response) {
-        if (response.status == 200) {
-          var json = response.responseText.evalJSON();
-          fill_result_card(json.data);
+      onSuccess: function (response) {
+        if (response.status === 200) {
+          const json = response.responseText.evalJSON();
+          fillResultCard(json.data);
+        } else {
+          showError("Reservation not found.");
         }
-        else
-          show_error("Reservation not found.");
       },
-      onFailure: function() {
-        console.log(2)
-        show_error("Server error. Please try again later.");
+      onFailure: function () {
+        showError("Server error. Please try again later.");
       },
-      onComplete: function() {
+      onComplete: function () {
         if (!info_appeared) {
           new Effect.Appear('result-card', { duration: 0.5 });
           info_appeared = true;
@@ -40,9 +39,8 @@ document.observe("dom:loaded", function () {
     });
   }
 
-  function fill_result_card(data) {
-    var resultCard = $('result-card');
-    resultCard.innerHTML = `
+  function fillResultCard(data) {
+    $('result-card').innerHTML = `
       <h4 class="mb-3">Reservation Info</h4>
       <p><strong>Name:</strong> ${data.first_name} ${data.last_name}</p>
       <p><strong>Reservation Code:</strong> ${data.reservation_code}</p>
@@ -52,15 +50,14 @@ document.observe("dom:loaded", function () {
     `;
   }
 
-  function show_error(message) {
-    var resultCard = $('result-card');
-    resultCard.innerHTML = `
+  function showError(message) {
+    $('result-card').innerHTML = `
       <h4 class="mb-3 text-danger">Error</h4>
       <p>${message}</p>
     `;
   }
 
-  function card_translation_effect() {
+  function playCardTranslation() {
     new Effect.Move('check-reservation', {
       x: -300,
       y: 0,

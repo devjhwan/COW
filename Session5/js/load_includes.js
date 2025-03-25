@@ -1,3 +1,13 @@
+/*
+###############################################################################
+#                                                                             #
+#   Author: JungHwan Lee                                                      #
+#   Submission Deadline: 31th March                                           #
+#   Niub: 20467554                                                            #
+#                                                                             #
+###############################################################################
+*/
+
 document.observe("dom:loaded", function () {
   new Ajax.Request('../includes/header.html', {
     method: 'get',

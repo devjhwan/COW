@@ -1,3 +1,13 @@
+/*
+###############################################################################
+#                                                                             #
+#   Author: JungHwan Lee                                                      #
+#   Submission Deadline: 31th March                                           #
+#   Niub: 20467554                                                            #
+#                                                                             #
+###############################################################################
+*/
+
 document.observe("dom:loaded", function () {
   var toggled = false;
 
@@ -34,36 +44,49 @@ function transformCardContainer() {
 }
 
 function alignCardRow() {
-  $("card-layout").removeClassName("d-flex");
-  $("card-layout").removeClassName("justify-content-center");
-  $("card-layout").removeClassName("align-items-center");
-  $("card-layout").removeClassName("vh-100");
-  
-  $("card-container").removeClassName("shadow-lg");
-  $("card-container").removeClassName("p-4");
+  resetCardLayout();
+  styleCardContainer();
+  styleCardTitle();
+  styleFormWrapper();
+  adjustFormGroup();
+  adjustFormButtons();
+}
+
+function resetCardLayout() {
+  removeClassesById("card-layout", "d-flex justify-content-center align-items-center vh-100");
+  removeClassesById("card-container", "shadow-lg p-4");
+  removeClassesById("card-title", "mb-4");
+  removeClassesById("form-wrapper", "flex-column");
+}
+
+function styleCardContainer() {
   $("card-container").addClassName("d-flex flex-row flex-wrap align-items-center");
   $("card-container").setStyle({
     maxWidth: "700px",
     width: "100%",
     margin: "0px",
     padding: "10px 20px",
-    gap: "30px",
+    gap: "30px"
   });
+}
 
-  $("card-title").removeClassName("mb-4");
+function styleCardTitle() {
   $("card-title").setStyle({
     flex: "0 0 200px",
     fontSize: "1.5rem",
     margin: "12px 6px"
   });
+}
 
-  $("form-wrapper").removeClassName("flex-column");
+function styleFormWrapper() {
   $("form-wrapper").addClassName("flex-row flex-wrap align-items-center");
   $("form-wrapper").setStyle({
     gap: "10px",
     flex: "1 1 auto"
   });
+}
 
+function adjustFormGroup() {
   const formGroup = $("form-wrapper").down(".form-group");
   formGroup.addClassName("d-flex flex-row align-items-center");
   formGroup.setStyle({
@@ -73,18 +96,34 @@ function alignCardRow() {
 
   const label = formGroup.down("label");
   if (label) label.remove();
-  const select = formGroup.down("select");
-  select.setStyle({ flex: "1 1 auto"});
 
+  const select = formGroup.down("select");
+  select.setStyle({ flex: "1 1 auto" });
+}
+
+function adjustFormButtons() {
   const elements = $("form-wrapper").select("button", "a");
   elements.forEach(function (el) {
-    el.removeClassName("btn-block");
-    el.removeClassName("mt-2");
+    removeClassesByElement(el, "btn-block mt-2");
     el.setStyle({
       flex: "0 0 100px",
       minWidth: "100px",
       marginBottom: "0"
     });
     el.addClassName("align-self-center");
+  });
+}
+
+function removeClassesById(id, classListString) {
+  const element = $(id);
+  if (!element) return;
+  removeClassesByElement(element, classListString);
+}
+
+function removeClassesByElement(el, classListString) {
+  if (!el) return;
+  const classes = classListString.split(/\s+/);
+  classes.forEach(function (className) {
+    el.removeClassName(className);
   });
 }

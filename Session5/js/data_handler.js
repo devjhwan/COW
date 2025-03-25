@@ -1,8 +1,20 @@
+/*
+###############################################################################
+#                                                                             #
+#   Author: JungHwan Lee                                                      #
+#   Submission Deadline: 31th March                                           #
+#   Niub: 20467554                                                            #
+#                                                                             #
+###############################################################################
+*/
+
 document.observe("dom:loaded", function () {
   var startInput = $("start-date");
   var endInput = $("end-date");
 
   startInput.observe("change", handleStartDateChange);
+
+  initializeStartDate();
 
   function initializeStartDate() {
     var today = new Date().toISOString().split("T")[0];
@@ -21,6 +33,4 @@ document.observe("dom:loaded", function () {
       }
     }
   }
-
-  initializeStartDate();
 });

@@ -18,8 +18,9 @@ if ($conn === null) {
   exit;
 }
 
-$user_id = isset($_POST['user_id']) ? $_POST['user_id'] : '';
-$password_input = isset($_POST['password']) ? $_POST['password'] : '';
+$user_id = $_POST['user_id'] ?? '';
+$password_input = $_POST['password'] ?? '';
+$autologin = isset($_POST['autologin']) && $_POST['autologin'] == '1';
 
 if ($user_id === '' || $password_input === '') {
   http_response_code(400);
@@ -28,18 +29,26 @@ if ($user_id === '' || $password_input === '') {
   exit;
 }
 
-$user_id_escaped = addslashes($user_id);
-$password_escaped = addslashes($password_input);
+$user_id_quoted = $conn->quote($user_id);
+$password_quoted = $conn->quote($password_input);
+$cookie_name = "hotelAuth";
+$cookie_time = time() + (86400 * 30);
 
-$sql = "SELECT password FROM users WHERE user_id = '$user_id_escaped'";
+$sql = "SELECT password FROM users WHERE user_id = $user_id_quoted";
 try {
   $result = $conn->query($sql);
   $row = $result !== false ? $result->fetch(PDO::FETCH_ASSOC) : false;
 
   if (!$row) {
-    $insert_sql = "INSERT INTO users (user_id, password) VALUES ('$user_id_escaped', '$password_escaped')";
+    $insert_sql = "INSERT INTO users (user_id, password) VALUES ($user_id_quoted, $password_quoted)";
     if ($conn->exec($insert_sql) !== false) {
       $_SESSION['user_id'] = $user_id;
+
+      if ($autologin) {
+        $token = md5($password_input);
+        setcookie($cookie_name, "usr=$user_id&hash=$token", $cookie_time, "/");
+      }
+
       echo json_encode(['success' => true, 'message' => 'New user created and logged in']);
     } else {
       http_response_code(500);
@@ -48,6 +57,12 @@ try {
   } else {
     if ($row['password'] === $password_input) {
       $_SESSION['user_id'] = $user_id;
+
+      if ($autologin) {
+        $token = md5($password_input);
+        setcookie($cookie_name, "usr=$user_id&hash=$token", $cookie_time, "/");
+      }
+
       echo json_encode(['success' => true, 'message' => 'Login successful']);
     } else {
       http_response_code(401);

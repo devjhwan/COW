@@ -11,24 +11,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     sendXmlError("Database connection failed.");
   }
 
-  $reservation_code = isset($_POST["reservation_code"]) ? trim($_POST["reservation_code"]) : '';
-  $last_name = isset($_POST["last_name"]) ? trim($_POST["last_name"]) : '';
+  $reservation_code_raw = isset($_POST["reservation_code"]) ? trim($_POST["reservation_code"]) : '';
+  $last_name_raw = isset($_POST["last_name"]) ? trim($_POST["last_name"]) : '';
 
   if (empty($_POST["reservation_code"]) || empty($_POST["last_name"])) {
     http_response_code(400);
     $conn = null;
-    sendXmlError("Missing required parameters.");
+    sendXmlError("Missing reservation_code or last_name");
+    exit;
   }
 
-  $reservation_code = addslashes($reservation_code);
-  $last_name = addslashes($last_name);
+  $reservation_code = $conn->quote($reservation_code_raw);
+  $last_name = $conn->quote($last_name_raw);
 
   $directory = __DIR__ . "/reservations";
   if (!is_dir($directory)) {
     mkdir($directory, 0755, true);
   }
   
-  $filename = $directory . "/reservation_output_" . $reservation_code . ".xml";
+  $filename = $directory . "/reservation_output_" . $reservation_code_raw . ".xml";
 
   if (file_exists($filename)) {
     try {
@@ -52,11 +53,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       c.first_name, c.last_name, c.doc_type, c.doc_id
     FROM reservations r
     JOIN clients c ON r.client_id = c.client_id
-    WHERE r.reservation_code = '$reservation_code'
-    AND c.last_name = '$last_name'
+    WHERE r.reservation_code = $reservation_code
+    AND c.last_name = $last_name
   ";
-
-  
 
   try {
     $result = $conn->query($sql);
@@ -87,19 +86,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 
   $conn = null;
+}
 
-  function sendXmlError($message) {
-    header("Content-Type: text/xml; charset=UTF-8");
-    $xml = new DOMDocument("1.0", "UTF-8");
-    $xml->formatOutput = true;
-  
-    $error = $xml->createElement("error");
-    $msg = $xml->createElement("message", $message);
-    $error->appendChild($msg);
-  
-    $xml->appendChild($error);
-    echo $xml->saveXML();
-    exit;
-  }
+function sendXmlError($message) {
+  header("Content-Type: text/xml; charset=UTF-8");
+  $xml = new DOMDocument("1.0", "UTF-8");
+  $xml->formatOutput = true;
+
+  $error = $xml->createElement("error");
+  $msg = $xml->createElement("message", $message);
+  $error->appendChild($msg);
+
+  $xml->appendChild($error);
+  echo $xml->saveXML();
+  exit;
 }
 ?>

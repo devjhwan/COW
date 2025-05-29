@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 header('Content-Type: application/json');
 
 if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
@@ -7,6 +9,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
     echo json_encode(['error' => 'Only GET method is allowed']);
     exit;
 }
+
+include_once 'autologin.php';
 
 if (isset($_SESSION['user_id'])) {
     echo json_encode([

@@ -1,7 +1,6 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
   require_once "db_connection.php";
-
   header('Content-Type: application/json; charset=utf-8');
 
   $conn = createConnection("world");
@@ -22,7 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
   }
 
   try {
-    $sql = "SELECT name FROM cities WHERE country_code = '$country_code'";
+    $country_code_quoted = $conn->quote($country_code);
+    $sql = "SELECT name FROM cities WHERE country_code = $country_code_quoted";
 
     $result = $conn->query($sql);
     if ($result === false)
@@ -32,6 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     while ($row = $result->fetch(PDO::FETCH_ASSOC))
       $cities[] = $row['name'];
 
+    http_response_code(200);
     echo json_encode($cities);
   } catch (PDOException $e) {
     http_response_code(500);

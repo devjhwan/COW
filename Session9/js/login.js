@@ -15,18 +15,32 @@ $(document).ready(function () {
 function handleLoginSubmit(e) {
   e.preventDefault();
 
-  const user_id = $("#username").val();
-  const password = $("#password").val();
+  const user_id = $("#username").val().trim();
+  const password = $("#password").val().trim();
+  const autologin = $("#autologin").is(":checked") ? 1 : 0;
 
-  sendLoginRequest(user_id, password);
+  if (!user_id || !password) {
+    showError("Username and password are required.");
+    return;
+  }
+
+  sendLoginRequest(user_id, password, autologin);
 }
 
-function sendLoginRequest(user_id, password) {
-  $.post("../php/login.php", { user_id, password }, function (data) {
-    window.location.href = "../html/home.html";
-  }, "json")
-  .fail(function () {
-    showError("Login failed");
+function sendLoginRequest(user_id, password, autologin) {
+  $.post(
+    "../php/login.php",
+    { user_id, password, autologin },
+    function (data) {
+      if (data.success) {
+        window.location.href = "../html/home.html";
+      } else {
+        showError(data.error || "Login failed.");
+      }
+    },
+    "json"
+  ).fail(function () {
+    showError("Server error. Please try again later.");
   });
 }
 

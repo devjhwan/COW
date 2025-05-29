@@ -1,8 +1,11 @@
 <?php
 session_start();
-session_unset(); 
+$cookie_name = "hotelAuth";
+
+unset($_SESSION['user_id']);
 session_destroy();
+
+setcookie($cookie_name, '', time() - 3600, "/");
 
 header("Location: ../html/login.html");
 exit;
-?>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<reservation>
+  <reservation_code>RVJD3KCY</reservation_code>
+  <country>Afghanistan</country>
+  <city>Herat</city>
+  <start_date>2025-05-29</start_date>
+  <end_date>2025-05-30</end_date>
+  <first_name>Junghwan</first_name>
+  <last_name>Lee</last_name>
+  <doc_type>DNI</doc_type>
+  <doc_id>12345678A</doc_id>
+</reservation>

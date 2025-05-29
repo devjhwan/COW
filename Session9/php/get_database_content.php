@@ -45,6 +45,13 @@ try {
 if (empty($selected_table) && count($tables) > 0)
   $selected_table = $tables[0];
 
+if (!in_array($selected_table, $tables)) {
+  http_response_code(400);
+  echo json_encode(["error" => "Invalid table name"]);
+  $conn = null;
+  exit;
+}
+
 $response = [
   "database" => $dbname,
   "tables" => $tables,

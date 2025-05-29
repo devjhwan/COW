@@ -1,0 +1,64 @@
+<!--
+###############################################################################
+#                                                                             #
+#   Author: JungHwan Lee                                                      #
+#   Submission Deadline: 31th March                                           #
+#   Niub: 20467554                                                            #
+#                                                                             #
+###############################################################################
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reservation Form</title>
+  <link rel="stylesheet" href="../packages/bootstrap-4.3.1_v2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/reserve.css">
+  <script src="../packages/bootstrap-4.3.1_v2/js/jquery.min.js"></script>
+  <script src="../packages/bootstrap-4.3.1_v2/js/popper.min.js"></script>
+  <script src="../packages/bootstrap-4.3.1_v2/js/bootstrap.min.js"></script>
+  <script src="../packages/jquery-ui-1.12.1/jquery-ui.js"></script>
+  <script src="../js/reserve_form_validation.js"></script>
+  <script src="../js/set_hidden_values.js"></script>
+  <script src="../js/load_includes.js"></script>
+</head>
+<body>
+  <div id="header-container"></div>
+  <div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card p-4 shadow-lg" style="max-width: 400px; width: 100%;">
+      <h2 class="text-center mb-4">Reservation Form</h2>
+      <div id="alert-box" class="alert alert-danger text-center" style="display:none;"></div>
+      <form action="../php/server.php" method="post">
+        <input type="hidden" name="country" id="hidden-country">
+        <input type="hidden" name="city" id="hidden-city">
+        <input type="hidden" name="start_date" id="hidden-start-date">
+        <input type="hidden" name="end_date" id="hidden-end-date">
+        <div class="form-group">
+          <label for="last_name">Last Name</label>
+          <input type="text" class="form-control" id="last_name" name="last_name" required>
+        </div>
+        <div class="form-group">
+          <label for="first_name">First Name</label>
+          <input type="text" class="form-control" id="first_name" name="first_name" required>
+        </div>
+        <div class="form-group">
+          <label for="doc_type">Document Type</label>
+          <select class="form-control" id="doc_type" name="doc_type" required>
+            <option value="DNI">DNI</option>
+            <option value="NIE">NIE</option>
+            <option value="PASSPORT">Passport</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="doc_id">Document ID</label>
+          <input type="text" class="form-control" id="doc_id" name="doc_id" required>
+        </div>
+        <button type="submit" id="reserve-btn" class="btn btn-primary btn-block">Reserve</button>
+        <a href="home.html" class="btn btn-secondary btn-block mt-2">Go Home</a>
+      </form>
+    </div>
+  </div>
+  <div id="footer-container"></div>
+</body>
+</html>

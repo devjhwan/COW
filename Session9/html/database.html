@@ -1,0 +1,84 @@
+<!--
+###############################################################################
+#                                                                             #
+#   Author: JungHwan Lee                                                      #
+#   Submission Deadline: 31th March                                           #
+#   Niub: 20467554                                                            #
+#                                                                             #
+###############################################################################
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Database Viewer</title>
+    <link rel="stylesheet" href="../packages/bootstrap-4.3.1_v2/css/bootstrap.min.css">
+    <script src="../packages/bootstrap-4.3.1_v2/js/jquery.min.js"></script>
+    <script src="../packages/bootstrap-4.3.1_v2/js/popper.min.js"></script>
+    <script src="../packages/bootstrap-4.3.1_v2/js/bootstrap.min.js"></script>
+    <script src="../packages/jquery-ui-1.12.1/jquery-ui.js"></script>
+    <script src="../js/fetch_table_content.js"></script>
+    <script src="../js/database_card_transition.js"></script>
+    <script src="../js/load_includes.js"></script>
+  </head>
+  <body>
+    <div id="header-container"></div>
+    <div id="page-container" class="container mt-5">
+      <div id="card-layout" class="d-flex justify-content-center align-items-center vh-100">
+        <div id="card-container" class="card p-4 shadow-lg" style="max-width: 400px; width: 100%;">
+          <h2 class="text-center mb-4" id="card-title">Database Viewer</h2>
+          <form id="db-form">
+            <div class="form-row d-flex flex-column flex-wrap" id="form-wrapper">
+              <div class="form-group">
+                <label for="database">Select a Database</label>
+                <select class="form-control" id="database" name="database">
+                  <option value="hotel">Hotel</option>
+                  <option value="imdb_small">IMDB Small</option>
+                  <option value="simpsons">Simpsons</option>
+                  <option value="world">World</option>
+                </select>
+              </div>
+              <button type="submit" id="connect-button" class="btn btn-primary btn-block">Connect</button>
+              <a href="home.html" class="btn btn-secondary btn-block mt-2">Go Home</a>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div id="table-container" style="display: none;">
+        <div class="container mt-5 mb-5">
+          <h2 class="text-center">Database: <strong id="db-name"></strong></h2>
+    
+          <ul class="nav nav-tabs mt-4" id="table-tabs">
+            <!-- Table tabs go here -->
+          </ul>
+    
+          <div class="card p-4 shadow-lg mt-4">
+            <h4 class="text-center mb-4">Table: <strong id="selected-table-name"></strong></h4>
+    
+            <div class="table-responsive">
+              <table class="table table-sm table-bordered">
+                <thead class="thead-dark">
+                  <tr id="table-headers"></tr>
+                    <!-- Column headers go here -->
+                  </tr>
+                </thead>
+                <tbody id="table-body"></tbody>
+                  <!-- Table rows go here -->
+                </tbody>
+              </table>
+            </div>
+    
+            <div class="d-flex justify-content-between mt-3">
+              <div>
+                <button type="button" id="prev-button" class="btn btn-outline-primary">← Previous</button>
+                <button type="button" id="next-button" class="btn btn-outline-primary">Next →</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer-container"></div>
+  </body>
+</html>

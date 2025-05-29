@@ -1,0 +1,79 @@
+<!--
+###############################################################################
+#                                                                             #
+#   Author: JungHwan Lee                                                      #
+#   Submission Deadline: 31th March                                           #
+#   Niub: 20467554                                                            #
+#                                                                             #
+###############################################################################
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset = "utf-8">
+    <title>COW práctica 2</title>
+    <link rel="stylesheet" href="../packages/bootstrap-4.3.1_v2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <script src="../packages/bootstrap-4.3.1_v2/js/jquery.min.js"></script>
+    <script src="../packages/bootstrap-4.3.1_v2/js/popper.min.js"></script>
+    <script src="../packages/bootstrap-4.3.1_v2/js/bootstrap.min.js"></script>
+    <script src="../packages/jquery-ui-1.12.1/jquery-ui.js"></script>
+    <script src="../js/data_handler.js"></script>
+    <script src="../js/home_autocompleter.js"></script>
+    <script src="../js/load_includes.js"></script>
+  </head>
+  <body>
+    <div id="header-container"></div>
+    <div class="searching center-item">
+      <div class="search-bar-background center-item bg-gold rounded">
+          <form class="search-bar d-flex flex-wrap center-item" action="reserve.html">
+            <input type="text" class="form-control input-field" name="country" id="country-input" placeholder="Country" required>
+            <input type="hidden" id="country-code" name="country_code">
+            <input type="text" class="form-control input-field" name="city" id="city-input" placeholder="City" disabled required>
+            <input type="date" class="form-control input-field" name="start_date" id="start-date" required>
+            <input type="date" class="form-control input-field" name="end_date" id="end-date" required>
+            <input class="btn btn-primary btn-lg input-field" type="submit" value="Reserve">
+          </form>
+      </div>
+    </div>
+    <div class="container">
+      <h2 id="card-list-title"s>Top rated ★★★★★</h2>
+      <ul class="list-group list-group-horizontal">
+        <li id="house1" class="list-group-item">
+          <div class="card">
+            <img src="../assets/house1.jpg" class="card-img-top" alt="House 1">
+            <div class="card-body">
+              <h5 class="card-title">House 1</h5>
+            </div>
+          </div>
+        </li>
+        <li id="house2" class="list-group-item">
+          <div class="card">
+            <img src="../assets/house2.jpg" class="card-img-top" alt="House 2">
+            <div class="card-body">
+              <h5 class="card-title">House 2</h5>
+            </div>
+          </div>
+        </li>
+        <li id="house3" class="list-group-item">
+          <div class="card">
+            <img src="../assets/house3.jpg" class="card-img-top" alt="House 3">
+            <div class="card-body">
+              <h5 class="card-title">House 3</h5>
+            </div>
+          </div>
+        </li>
+        <li id="house4" class="list-group-item">
+          <div class="card">
+            <img src="../assets/house4.jpg" class="card-img-top" alt="House 4">
+            <div class="card-body">
+              <h5 class="card-title">House 4</h5>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div id="footer-container"></div>
+  </body>
+</html>
